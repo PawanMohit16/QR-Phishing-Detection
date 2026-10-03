@@ -1,0 +1,211 @@
+text,category,label
+"Hi, this is HR. Please review the new bonus policy here: https://acmecourier-track.top.test/r?id=77",sms,suspicious
+"AcmeBank: A login to your account was made from your usual device. If this was you, no action needed.",account_alert,legitimate
+FINAL WARNING: Your salary payment is on hold. Verify your bank details within 2 hours: https://tinyurl.com/acme-demo,sms,high-risk
+"AcmeBank: A login to your account was made from your usual device. If this was you, no action needed.",account_alert,legitimate
+AcmeBank: New payee added. Not you? Review at http://acmebank-secure-login.example/verify,account_alert,suspicious
+Calendar: Quarterly review moved to 15:00.,notification,legitimate
+"URGENT: CEO needs gift cards immediately. Reply now, do not tell anyone. http://acmebank-secure-login.example/verify",sms,high-risk
+A document was shared with you. Open it: https://acme-payroll.verify-now.test/confirm,notification,suspicious
+Your mailbox storage is almost full. Manage storage: http://192.0.2.45/login,notification,suspicious
+AcmeCourier: Parcel #324643 delivered to reception at 17:00.,delivery,legitimate
+AcmeCourier: Parcel held at customs. Pay a $2.99 fee within 24 hours or it will be returned: https://t.co/aBcDeF,delivery,high-risk
+AcmeCourier: Parcel #559381 delivered to reception at 17:00.,delivery,legitimate
+QR sticker on a meeting-room door says 'Scan for room booking' and opens https://bit.ly/3xAmpLe,qr,suspicious
+Your AcmeCorp verification code is 571029. Do not share it with anyone.,sms,legitimate
+QR sticker on a meeting-room door says 'Scan for room booking' and opens https://acme-payroll.verify-now.test/confirm,qr,suspicious
+Your AcmeCorp verification code is 865179. Do not share it with anyone.,sms,legitimate
+QR on office poster linking to https://wifi.acmecorp.example/guest for guest Wi-Fi sign-in.,qr,legitimate
+AcmeCourier: Parcel held at customs. Pay a $2.99 fee within 24 hours or it will be returned: https://bit.ly/3xAmpLe,delivery,high-risk
+"QR on a parking-fine notice: 'Pay penalty now or face legal action', opens https://acme-payroll.verify-now.test/confirm",qr,high-risk
+Your AcmeCorp verification code is 334053. Do not share it with anyone.,sms,legitimate
+QR on cafeteria menu opening https://menu.acmecorp.example/today.,qr,legitimate
+LAST NOTICE: Package undeliverable. Confirm card details to release it: http://192.0.2.45/login,delivery,high-risk
+QR on office poster linking to https://wifi.acmecorp.example/guest for guest Wi-Fi sign-in.,qr,legitimate
+Your account will be reviewed soon. Confirm your details: http://192.0.2.45/login,account_alert,suspicious
+AcmeBank: Your statement is ready. Log in via the official app to view it.,account_alert,legitimate
+A document was shared with you. Open it: https://acmecourier-track.top.test/r?id=77,notification,suspicious
+Your account has been suspended. Click here immediately to restore access: https://bit.ly/3xAmpLe,notification,high-risk
+AcmeCourier: Parcel #122056 delivered to reception at 17:00.,delivery,legitimate
+A document was shared with you. Open it: http://192.0.2.45/login,notification,suspicious
+"QR on a flyer in the lobby: 'Scan for free coffee', opens https://t.co/aBcDeF",qr,suspicious
+"QR on a parking-fine notice: 'Pay penalty now or face legal action', opens http://192.0.2.45/login",qr,high-risk
+SECURITY ALERT: Your AcmeCorp password expires TODAY. Login now to avoid lockout: http://192.0.2.45/login,notification,high-risk
+Your AcmeCorp VPN password expires in 14 days. Change it anytime at https://it.acmecorp.example/password,notification,legitimate
+AcmeCourier: Your parcel is waiting. Reschedule delivery: https://acmecourier-track.top.test/r?id=77,delivery,suspicious
+Your AcmeCorp VPN password expires in 14 days. Change it anytime at https://it.acmecorp.example/password,notification,legitimate
+"Hi, this is HR. Please review the new bonus policy here: http://acmecorp-hr.support.test/pay",sms,suspicious
+Your payslip for this month is available in the HR portal at https://hr.acmecorp.example,sms,legitimate
+Your mailbox storage is almost full. Manage storage: http://acmecorp-hr.support.test/pay,notification,suspicious
+AcmeCourier: Your parcel is waiting. Reschedule delivery: https://t.co/aBcDeF,delivery,suspicious
+Calendar: Quarterly review moved to 17:00.,notification,legitimate
+SECURITY ALERT: Your AcmeCorp password expires TODAY. Login now to avoid lockout: https://t.co/aBcDeF,notification,high-risk
+Your card has been blocked. Verify card number and CVV within 30 minutes or lose access: http://192.0.2.45/login,account_alert,high-risk
+"QR on a parking-fine notice: 'Pay penalty now or face legal action', opens http://192.0.2.45/login",qr,high-risk
+Your card has been blocked. Verify card number and CVV within 30 minutes or lose access: https://t.co/aBcDeF,account_alert,high-risk
+AcmeCourier: Parcel #544154 delivered to reception at 15:00.,delivery,legitimate
+Calendar: Quarterly review moved to 13:00.,notification,legitimate
+LAST NOTICE: Package undeliverable. Confirm card details to release it: http://192.0.2.45/login,delivery,high-risk
+"QR on a flyer in the lobby: 'Scan for free coffee', opens https://t.co/aBcDeF",qr,suspicious
+Calendar: Quarterly review moved to 9:00.,notification,legitimate
+A document was shared with you. Open it: http://192.0.2.45/login,notification,suspicious
+AcmeCourier: Your parcel #639131 is out for delivery today. Track in the AcmeCourier app.,delivery,legitimate
+"Hi, this is HR. Please review the new bonus policy here: https://bit.ly/3xAmpLe",sms,suspicious
+A document was shared with you. Open it: http://acmebank-secure-login.example/verify,notification,suspicious
+AcmeBank: New payee added. Not you? Review at https://tinyurl.com/acme-demo,account_alert,suspicious
+You have 1 unread voicemail. Listen: https://acmecourier-track.top.test/r?id=77,sms,suspicious
+AcmeCourier: Your parcel #806073 is out for delivery today. Track in the AcmeCourier app.,delivery,legitimate
+Your card has been blocked. Verify card number and CVV within 30 minutes or lose access: https://acmecourier-track.top.test/r?id=77,account_alert,high-risk
+"QR on a fake IT poster: 'Scan to re-verify your login immediately', opens http://192.0.2.45/login",qr,high-risk
+AcmeCourier: Parcel held at customs. Pay a $2.99 fee within 24 hours or it will be returned: https://bit.ly/3xAmpLe,delivery,high-risk
+Your account will be reviewed soon. Confirm your details: https://bit.ly/3xAmpLe,account_alert,suspicious
+You have 1 unread voicemail. Listen: https://acmecourier-track.top.test/r?id=77,sms,suspicious
+AcmeCourier: Your parcel is waiting. Reschedule delivery: http://acmecorp-hr.support.test/pay,delivery,suspicious
+FINAL WARNING: Your salary payment is on hold. Verify your bank details within 2 hours: https://bit.ly/3xAmpLe,sms,high-risk
+Delivery attempt failed. Update your address at http://acmebank-secure-login.example/verify,delivery,suspicious
+QR on cafeteria menu opening https://menu.acmecorp.example/today.,qr,legitimate
+Reminder: team meeting at 17:00 in Room 4. - AcmeCorp Admin,sms,legitimate
+Your mailbox storage is almost full. Manage storage: https://acme-payroll.verify-now.test/confirm,notification,suspicious
+AcmeCourier: Parcel held at customs. Pay a $2.99 fee within 24 hours or it will be returned: https://bit.ly/3xAmpLe,delivery,high-risk
+Calendar: Quarterly review moved to 16:00.,notification,legitimate
+Your AcmeCorp verification code is 329258. Do not share it with anyone.,sms,legitimate
+QR on cafeteria menu opening https://menu.acmecorp.example/today.,qr,legitimate
+Your mailbox storage is almost full. Manage storage: https://bit.ly/3xAmpLe,notification,suspicious
+Your account has been suspended. Click here immediately to restore access: https://bit.ly/3xAmpLe,notification,high-risk
+"AcmeBank ALERT: Unauthorized transaction of $4,999 detected! Confirm your PIN and OTP now: http://acmecorp-hr.support.test/pay",account_alert,high-risk
+AcmeCourier: Your parcel is waiting. Reschedule delivery: https://tinyurl.com/acme-demo,delivery,suspicious
+"QR on a flyer in the lobby: 'Scan for free coffee', opens https://acme-payroll.verify-now.test/confirm",qr,suspicious
+"QR on a parking-fine notice: 'Pay penalty now or face legal action', opens https://bit.ly/3xAmpLe",qr,high-risk
+LAST NOTICE: Package undeliverable. Confirm card details to release it: http://acmecorp-hr.support.test/pay,delivery,high-risk
+"QR on a flyer in the lobby: 'Scan for free coffee', opens https://tinyurl.com/acme-demo",qr,suspicious
+SECURITY ALERT: Your AcmeCorp password expires TODAY. Login now to avoid lockout: https://t.co/aBcDeF,notification,high-risk
+"URGENT: CEO needs gift cards immediately. Reply now, do not tell anyone. http://acmebank-secure-login.example/verify",sms,high-risk
+SECURITY ALERT: Your AcmeCorp password expires TODAY. Login now to avoid lockout: https://acme-payroll.verify-now.test/confirm,notification,high-risk
+Delivery attempt failed. Update your address at https://t.co/aBcDeF,delivery,suspicious
+Your card has been blocked. Verify card number and CVV within 30 minutes or lose access: https://t.co/aBcDeF,account_alert,high-risk
+AcmeCourier: Your parcel is waiting. Reschedule delivery: http://acmecorp-hr.support.test/pay,delivery,suspicious
+SECURITY ALERT: Your AcmeCorp password expires TODAY. Login now to avoid lockout: https://t.co/aBcDeF,notification,high-risk
+"QR on a flyer in the lobby: 'Scan for free coffee', opens https://acme-payroll.verify-now.test/confirm",qr,suspicious
+AcmeCourier: Parcel held at customs. Pay a $2.99 fee within 24 hours or it will be returned: http://192.0.2.45/login,delivery,high-risk
+AcmeCourier: Your parcel #791798 is out for delivery today. Track in the AcmeCourier app.,delivery,legitimate
+"QR on a fake IT poster: 'Scan to re-verify your login immediately', opens https://bit.ly/3xAmpLe",qr,high-risk
+FINAL WARNING: Your salary payment is on hold. Verify your bank details within 2 hours: https://acmecourier-track.top.test/r?id=77,sms,high-risk
+"URGENT: CEO needs gift cards immediately. Reply now, do not tell anyone. https://acmecourier-track.top.test/r?id=77",sms,high-risk
+"QR on a flyer in the lobby: 'Scan for free coffee', opens https://bit.ly/3xAmpLe",qr,suspicious
+Your AcmeCorp VPN password expires in 14 days. Change it anytime at https://it.acmecorp.example/password,notification,legitimate
+QR on cafeteria menu opening https://menu.acmecorp.example/today.,qr,legitimate
+Your card has been blocked. Verify card number and CVV within 30 minutes or lose access: https://tinyurl.com/acme-demo,account_alert,high-risk
+"QR on a flyer in the lobby: 'Scan for free coffee', opens https://acmecourier-track.top.test/r?id=77",qr,suspicious
+You have 1 unread voicemail. Listen: http://acmebank-secure-login.example/verify,sms,suspicious
+AcmeBank: Your statement is ready. Log in via the official app to view it.,account_alert,legitimate
+"URGENT: CEO needs gift cards immediately. Reply now, do not tell anyone. http://acmebank-secure-login.example/verify",sms,high-risk
+"AcmeBank: A login to your account was made from your usual device. If this was you, no action needed.",account_alert,legitimate
+SECURITY ALERT: Your AcmeCorp password expires TODAY. Login now to avoid lockout: https://bit.ly/3xAmpLe,notification,high-risk
+AcmeBank: Your statement is ready. Log in via the official app to view it.,account_alert,legitimate
+SECURITY ALERT: Your AcmeCorp password expires TODAY. Login now to avoid lockout: http://192.0.2.45/login,notification,high-risk
+Your account will be reviewed soon. Confirm your details: https://tinyurl.com/acme-demo,account_alert,suspicious
+AcmeCourier: Parcel #653306 delivered to reception at 15:00.,delivery,legitimate
+Your card has been blocked. Verify card number and CVV within 30 minutes or lose access: https://t.co/aBcDeF,account_alert,high-risk
+AcmeBank: New payee added. Not you? Review at https://acme-payroll.verify-now.test/confirm,account_alert,suspicious
+AcmeBank: New payee added. Not you? Review at https://acme-payroll.verify-now.test/confirm,account_alert,suspicious
+"AcmeBank: A login to your account was made from your usual device. If this was you, no action needed.",account_alert,legitimate
+Reminder: team meeting at 12:00 in Room 4. - AcmeCorp Admin,sms,legitimate
+AcmeBank: New payee added. Not you? Review at https://bit.ly/3xAmpLe,account_alert,suspicious
+Your AcmeCorp VPN password expires in 14 days. Change it anytime at https://it.acmecorp.example/password,notification,legitimate
+FINAL WARNING: Your salary payment is on hold. Verify your bank details within 2 hours: https://t.co/aBcDeF,sms,high-risk
+Your mailbox storage is almost full. Manage storage: http://acmecorp-hr.support.test/pay,notification,suspicious
+QR on cafeteria menu opening https://menu.acmecorp.example/today.,qr,legitimate
+You have 1 unread voicemail. Listen: https://bit.ly/3xAmpLe,sms,suspicious
+Your AcmeCorp VPN password expires in 14 days. Change it anytime at https://it.acmecorp.example/password,notification,legitimate
+AcmeCourier: Your parcel #170674 is out for delivery today. Track in the AcmeCourier app.,delivery,legitimate
+Calendar: Quarterly review moved to 10:00.,notification,legitimate
+"Hi, this is HR. Please review the new bonus policy here: https://tinyurl.com/acme-demo",sms,suspicious
+"QR on a fake IT poster: 'Scan to re-verify your login immediately', opens https://acme-payroll.verify-now.test/confirm",qr,high-risk
+FINAL WARNING: Your salary payment is on hold. Verify your bank details within 2 hours: https://acme-payroll.verify-now.test/confirm,sms,high-risk
+QR on office poster linking to https://wifi.acmecorp.example/guest for guest Wi-Fi sign-in.,qr,legitimate
+"QR on a fake IT poster: 'Scan to re-verify your login immediately', opens http://192.0.2.45/login",qr,high-risk
+AcmeBank: New payee added. Not you? Review at https://acmecourier-track.top.test/r?id=77,account_alert,suspicious
+AcmeCourier: Your parcel #198907 is out for delivery today. Track in the AcmeCourier app.,delivery,legitimate
+QR on office poster linking to https://wifi.acmecorp.example/guest for guest Wi-Fi sign-in.,qr,legitimate
+You have 1 unread voicemail. Listen: http://192.0.2.45/login,sms,suspicious
+FINAL WARNING: Your salary payment is on hold. Verify your bank details within 2 hours: http://acmebank-secure-login.example/verify,sms,high-risk
+AcmeBank: Your statement is ready. Log in via the official app to view it.,account_alert,legitimate
+"AcmeBank: A login to your account was made from your usual device. If this was you, no action needed.",account_alert,legitimate
+SECURITY ALERT: Your AcmeCorp password expires TODAY. Login now to avoid lockout: http://192.0.2.45/login,notification,high-risk
+SECURITY ALERT: Your AcmeCorp password expires TODAY. Login now to avoid lockout: https://t.co/aBcDeF,notification,high-risk
+QR on office poster linking to https://wifi.acmecorp.example/guest for guest Wi-Fi sign-in.,qr,legitimate
+AcmeCourier: Parcel held at customs. Pay a $2.99 fee within 24 hours or it will be returned: http://acmecorp-hr.support.test/pay,delivery,high-risk
+AcmeCourier: Parcel held at customs. Pay a $2.99 fee within 24 hours or it will be returned: http://192.0.2.45/login,delivery,high-risk
+Your payslip for this month is available in the HR portal at https://hr.acmecorp.example,sms,legitimate
+You have 1 unread voicemail. Listen: http://192.0.2.45/login,sms,suspicious
+"AcmeBank: A login to your account was made from your usual device. If this was you, no action needed.",account_alert,legitimate
+QR on office poster linking to https://wifi.acmecorp.example/guest for guest Wi-Fi sign-in.,qr,legitimate
+Your AcmeCorp verification code is 832052. Do not share it with anyone.,sms,legitimate
+"AcmeBank: A login to your account was made from your usual device. If this was you, no action needed.",account_alert,legitimate
+Delivery attempt failed. Update your address at https://tinyurl.com/acme-demo,delivery,suspicious
+Delivery attempt failed. Update your address at https://acme-payroll.verify-now.test/confirm,delivery,suspicious
+"AcmeBank ALERT: Unauthorized transaction of $4,999 detected! Confirm your PIN and OTP now: https://acme-payroll.verify-now.test/confirm",account_alert,high-risk
+AcmeBank: Your statement is ready. Log in via the official app to view it.,account_alert,legitimate
+Your card has been blocked. Verify card number and CVV within 30 minutes or lose access: https://tinyurl.com/acme-demo,account_alert,high-risk
+"QR on a parking-fine notice: 'Pay penalty now or face legal action', opens http://192.0.2.45/login",qr,high-risk
+AcmeCourier: Parcel #354801 delivered to reception at 16:00.,delivery,legitimate
+Your account has been suspended. Click here immediately to restore access: http://acmecorp-hr.support.test/pay,notification,high-risk
+AcmeCourier: Parcel held at customs. Pay a $2.99 fee within 24 hours or it will be returned: http://192.0.2.45/login,delivery,high-risk
+QR sticker on a meeting-room door says 'Scan for room booking' and opens https://bit.ly/3xAmpLe,qr,suspicious
+A document was shared with you. Open it: https://acmecourier-track.top.test/r?id=77,notification,suspicious
+AcmeCourier: Parcel held at customs. Pay a $2.99 fee within 24 hours or it will be returned: https://acme-payroll.verify-now.test/confirm,delivery,high-risk
+AcmeCourier: Your parcel #107540 is out for delivery today. Track in the AcmeCourier app.,delivery,legitimate
+Your payslip for this month is available in the HR portal at https://hr.acmecorp.example,sms,legitimate
+Your card has been blocked. Verify card number and CVV within 30 minutes or lose access: https://bit.ly/3xAmpLe,account_alert,high-risk
+AcmeCourier: Your parcel is waiting. Reschedule delivery: http://acmecorp-hr.support.test/pay,delivery,suspicious
+"QR on a flyer in the lobby: 'Scan for free coffee', opens https://acme-payroll.verify-now.test/confirm",qr,suspicious
+Your payslip for this month is available in the HR portal at https://hr.acmecorp.example,sms,legitimate
+"QR on a flyer in the lobby: 'Scan for free coffee', opens http://192.0.2.45/login",qr,suspicious
+Your account will be reviewed soon. Confirm your details: https://acme-payroll.verify-now.test/confirm,account_alert,suspicious
+"AcmeBank: A login to your account was made from your usual device. If this was you, no action needed.",account_alert,legitimate
+Your card has been blocked. Verify card number and CVV within 30 minutes or lose access: https://bit.ly/3xAmpLe,account_alert,high-risk
+QR on office poster linking to https://wifi.acmecorp.example/guest for guest Wi-Fi sign-in.,qr,legitimate
+"Hi, this is HR. Please review the new bonus policy here: http://192.0.2.45/login",sms,suspicious
+Your AcmeCorp VPN password expires in 14 days. Change it anytime at https://it.acmecorp.example/password,notification,legitimate
+Delivery attempt failed. Update your address at https://acme-payroll.verify-now.test/confirm,delivery,suspicious
+Your AcmeCorp verification code is 197251. Do not share it with anyone.,sms,legitimate
+FINAL WARNING: Your salary payment is on hold. Verify your bank details within 2 hours: http://192.0.2.45/login,sms,high-risk
+Your account will be reviewed soon. Confirm your details: http://192.0.2.45/login,account_alert,suspicious
+Your card has been blocked. Verify card number and CVV within 30 minutes or lose access: https://t.co/aBcDeF,account_alert,high-risk
+You have 1 unread voicemail. Listen: https://tinyurl.com/acme-demo,sms,suspicious
+"QR on a flyer in the lobby: 'Scan for free coffee', opens https://t.co/aBcDeF",qr,suspicious
+AcmeBank: New payee added. Not you? Review at http://acmebank-secure-login.example/verify,account_alert,suspicious
+Your mailbox storage is almost full. Manage storage: https://t.co/aBcDeF,notification,suspicious
+AcmeBank: Your statement is ready. Log in via the official app to view it.,account_alert,legitimate
+Your AcmeCorp VPN password expires in 14 days. Change it anytime at https://it.acmecorp.example/password,notification,legitimate
+Your card has been blocked. Verify card number and CVV within 30 minutes or lose access: https://acmecourier-track.top.test/r?id=77,account_alert,high-risk
+"Hi, this is HR. Please review the new bonus policy here: http://acmecorp-hr.support.test/pay",sms,suspicious
+A document was shared with you. Open it: https://bit.ly/3xAmpLe,notification,suspicious
+Your account will be reviewed soon. Confirm your details: http://192.0.2.45/login,account_alert,suspicious
+Your mailbox storage is almost full. Manage storage: http://acmecorp-hr.support.test/pay,notification,suspicious
+"QR on a parking-fine notice: 'Pay penalty now or face legal action', opens http://acmecorp-hr.support.test/pay",qr,high-risk
+"QR on a fake IT poster: 'Scan to re-verify your login immediately', opens http://acmebank-secure-login.example/verify",qr,high-risk
+AcmeCourier: Your parcel is waiting. Reschedule delivery: https://bit.ly/3xAmpLe,delivery,suspicious
+Your account has been suspended. Click here immediately to restore access: https://acmecourier-track.top.test/r?id=77,notification,high-risk
+Your account will be reviewed soon. Confirm your details: https://bit.ly/3xAmpLe,account_alert,suspicious
+"URGENT: CEO needs gift cards immediately. Reply now, do not tell anyone. https://acmecourier-track.top.test/r?id=77",sms,high-risk
+AcmeCourier: Your parcel #359947 is out for delivery today. Track in the AcmeCourier app.,delivery,legitimate
+You have 1 unread voicemail. Listen: http://acmebank-secure-login.example/verify,sms,suspicious
+Delivery attempt failed. Update your address at http://acmecorp-hr.support.test/pay,delivery,suspicious
+Your account has been suspended. Click here immediately to restore access: http://192.0.2.45/login,notification,high-risk
+"QR on a flyer in the lobby: 'Scan for free coffee', opens http://192.0.2.45/login",qr,suspicious
+AcmeCourier: Your parcel is waiting. Reschedule delivery: http://192.0.2.45/login,delivery,suspicious
+AcmeCourier: Your parcel #847581 is out for delivery today. Track in the AcmeCourier app.,delivery,legitimate
+AcmeCourier: Parcel held at customs. Pay a $2.99 fee within 24 hours or it will be returned: https://acme-payroll.verify-now.test/confirm,delivery,high-risk
+"QR on a parking-fine notice: 'Pay penalty now or face legal action', opens https://tinyurl.com/acme-demo",qr,high-risk
+Reminder: team meeting at 14:00 in Room 4. - AcmeCorp Admin,sms,legitimate
+"QR on a fake IT poster: 'Scan to re-verify your login immediately', opens http://192.0.2.45/login",qr,high-risk
+QR on cafeteria menu opening https://menu.acmecorp.example/today.,qr,legitimate
+"QR on a fake IT poster: 'Scan to re-verify your login immediately', opens https://t.co/aBcDeF",qr,high-risk
+LAST NOTICE: Package undeliverable. Confirm card details to release it: https://acme-payroll.verify-now.test/confirm,delivery,high-risk
+Your payslip for this month is available in the HR portal at https://hr.acmecorp.example,sms,legitimate
+FINAL WARNING: Your salary payment is on hold. Verify your bank details within 2 hours: http://192.0.2.45/login,sms,high-risk
+FINAL WARNING: Your salary payment is on hold. Verify your bank details within 2 hours: http://acmecorp-hr.support.test/pay,sms,high-risk
+Your card has been blocked. Verify card number and CVV within 30 minutes or lose access: http://acmebank-secure-login.example/verify,account_alert,high-risk
+QR on office poster linking to https://wifi.acmecorp.example/guest for guest Wi-Fi sign-in.,qr,legitimate
+Calendar: Quarterly review moved to 12:00.,notification,legitimate

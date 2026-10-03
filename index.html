@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PhishLens – Smishing & QR Analyzer</title>
+<style>
+:root{--bg:#eef2f4;--card:#fff;--ink:#14232b;--mut:#5b6c75;--line:#d8e0e4;--brand:#0e7c86;--ok:#2e8b57;--warn:#d98a00;--bad:#c62f3b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d161b;--card:#16232a;--ink:#e6eef1;--mut:#8fa3ad;--line:#26363e;--brand:#3cc0cc}}
+:root[data-theme="dark"]{--bg:#0d161b;--card:#16232a;--ink:#e6eef1;--mut:#8fa3ad;--line:#26363e;--brand:#3cc0cc}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 "Segoe UI",system-ui,sans-serif;display:flex;justify-content:center}
+.app{width:100%;max-width:430px;min-height:100vh;display:flex;flex-direction:column}
+header{padding:16px 18px 8px;display:flex;justify-content:space-between;align-items:center}
+header h1{margin:0;font-size:20px;letter-spacing:-.2px}header small{color:var(--mut)}
+main{flex:1;padding:6px 14px 84px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px}
+.cam{position:relative;background:#000;border-radius:16px;overflow:hidden;aspect-ratio:3/4;display:none}
+.cam video{width:100%;height:100%;object-fit:cover}
+.cam .frame{position:absolute;inset:18% 12%;border:2px solid #fff9;border-radius:14px}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+button{font:inherit;border:0;border-radius:12px;padding:12px 14px;background:var(--brand);color:#fff;font-weight:600;flex:1;cursor:pointer}
+button.alt{background:transparent;color:var(--brand);border:1.5px solid var(--brand)}
+button:focus-visible,textarea:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
+textarea{width:100%;min-height:110px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:10px;font:inherit;resize:vertical}
+.gauge{height:12px;border-radius:8px;background:var(--line);overflow:hidden;margin:8px 0}.gauge i{display:block;height:100%;width:0;transition:width .5s}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;color:#fff;font-weight:700;font-size:13px}
+.chip{display:inline-block;margin:2px 4px 2px 0;padding:3px 9px;border-radius:14px;background:var(--bg);border:1px solid var(--line);font-size:13px}
+ul{margin:6px 0;padding-left:18px}li{margin:3px 0}
+h3{margin:0 0 6px;font-size:15px}.mut{color:var(--mut);font-size:13px}
+nav{position:fixed;bottom:0;width:100%;max-width:430px;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav button{background:none;color:var(--mut);border-radius:0;padding:12px 4px;font-size:12px}nav button.on{color:var(--brand)}
+.hide{display:none}.big{font-size:34px;font-weight:800;line-height:1}
+.hist{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--line)}.hist:last-child{border:0}
+</style></head><body><div class="app">
+<header><div><h1>PhishLens</h1><small>Smishing &amp; QR risk scanner</small></div><span class="chip">Python + ML</span></header>
+<main>
+<section id="tab-scan">
+  <div class="cam" id="cam"><video id="vid" playsinline muted></video><div class="frame"></div></div>
+  <div class="card" style="margin-top:12px">
+    <div class="row"><button id="bPhoto">📸 Take photo / pick image</button><input type="file" id="file" accept="image/*" capture="environment" hidden></div>
+    <div class="row" style="margin-top:8px"><button class="alt" id="bCam">Live camera</button><button class="alt" id="bShot" disabled>Scan OCR</button></div>
+    <p class="mut" id="status">Point at a message screenshot or a QR code. A QR code is read automatically; use Scan OCR for text.</p>
+    <textarea id="txt" placeholder="…or paste the message / QR link text here"></textarea>
+    <div class="row" style="margin-top:8px"><button id="bGo">Analyze</button><button class="alt" id="bDemo">Try sample</button></div>
+  </div>
+  <div id="res" class="hide"></div>
+</section>
+<section id="tab-hist" class="hide"><div class="card"><h3>Scan history</h3><div id="hist" class="mut">Nothing scanned yet.</div></div></section>
+<section id="tab-about" class="hide"><div class="card"><h3>How the score works</h3>
+<p class="mut">Each indicator adds points (shortened URL 20, untrusted domain 20, credential request 18, urgency words 7, call-to-action 6 …), capped at 100. 0–21 legitimate · 22–49 suspicious · 50+ high-risk.</p>
+<p class="mut">OCR and QR decoding run in your browser. The text is sent to a Python API that applies the rules and a TF-IDF + logistic-regression model trained on synthetic data. Domains are fictional.</p></div></section>
+</main>
+<nav><button class="on" data-t="scan">Scan</button><button data-t="hist">History</button><button data-t="about">About</button></nav>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/5.0.5/tesseract.min.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+const SHORT=["bit.ly","tinyurl.com","t.co","goo.gl","ow.ly","is.gd","cutt.ly","rb.gy"],TLD=["xyz","top","click","icu","live","support","zip","test"],
+TRUST=["acmecorp.example","hr.acmecorp.example","it.acmecorp.example"],BR=["acme","bank","courier","payroll","hr"];
+const KW={urgency:["urgent","immediately","now","today","final","last notice","within","expires","asap","warning"],
+financial:["payment","bank","card","cvv","salary","fee","refund","transaction","$","pay","bonus","invoice","penalty"],
+account:["account","password","login","verify","otp","pin","suspended","blocked","locked","credentials","security"]};
+const CTA=["click here","tap here","scan now","scan to","reply now","log in","login now","verify","confirm","update your","reschedule","pay","restore access"];
+const PSY={urgency:["urgent","immediately","within","expires","today","final","last notice","now","hours","minutes"],
+fear:["suspended","blocked","unauthorized","legal action","penalty","lose access","lockout","warning","returned","customs"],
+curiosity:["voicemail","shared with you","unread","document","waiting","parcel","scan for"],
+authority:["ceo","hr","it department","bank","police","tax","manager","admin","customs"],
+reward:["bonus","free","refund","prize","gift","won","salary"],
+trust:["do not share","official","your usual","reminder","verification code"]};
+const ACT={legitimate:"No action needed. Still prefer opening the official app or portal yourself.",
+suspicious:"Don't click or scan. Verify through a known channel (official app or phone number) and report to IT.",
+"high-risk":"Do NOT click, scan, reply or pay. Report to the security team and delete it. If you entered credentials, change passwords and alert IT now."};
+const has=(l,w)=>new RegExp("(?<!\\w)"+w.replace(/[$.]/g,"\\$&")+(w==="$"?"":"\\b")).test(l);
+function analyze(t){
+  const low=t.toLowerCase(),urls=(t.match(/(?:https?:\/\/|www\.)[^\s<>"']+/gi)||[]).map(u=>u.replace(/[.,)]+$/,""));
+  const flags={},short=[];
+  urls.forEach(u=>{let h="";try{h=new URL(u.startsWith("http")?u:"http://"+u).hostname.toLowerCase()}catch(e){}
+    const f=[];if(SHORT.includes(h)){short.push(u);f.push("URL shortener")}
+    if(/^\d+(\.\d+){3}$/.test(h))f.push("raw IP address");if(h.includes("xn--"))f.push("punycode look-alike");
+    if((h.match(/-/g)||[]).length>=2)f.push("many hyphens");if(TLD.includes(h.split(".").pop()))f.push("risky TLD");
+    if(BR.some(b=>h.includes(b))&&!TRUST.includes(h)&&!SHORT.includes(h))f.push("brand look-alike");
+    if(/^http:/i.test(u))f.push("no HTTPS");if(f.length)flags[h]=f;});
+  const k={};for(const n in KW)k[n]=KW[n].filter(w=>has(low,w));
+  const cta=CTA.filter(c=>low.includes(c));
+  const psy=Object.entries(PSY).map(([n,ws])=>[n,ws.filter(w=>low.includes(w)).length]).filter(x=>x[1]).sort((a,b)=>b[1]-a[1]);
+  const H={},add=(n,p,w)=>H[n]=[p,w];
+  if(short.length)add("Shortened URL",20,short[0]);
+  if(Object.keys(flags).length)add("Suspicious domain",20,Object.entries(flags).map(([h,f])=>h+": "+f.join(", ")).join("; "));
+  if(Object.values(flags).some(f=>f.includes("raw IP address")))add("Raw IP link",15,"Bare IP address");
+  if(urls.some(u=>/^http:/i.test(u)))add("Not HTTPS",8,"Insecure link");
+  if(k.urgency.length)add("Urgency words",7,k.urgency.join(", "));if(k.financial.length)add("Financial words",6,k.financial.join(", "));
+  if(k.account.length)add("Account words",6,k.account.join(", "));if(cta.length)add("Call to action",6,cta.join(", "));
+  if(/\b(otp|pin|cvv|card number|password|bank details|credentials)\b/.test(low)&&cta.length)add("Credential request",18,"Asks for sensitive data");
+  const pn=psy.map(x=>x[0]);
+  if(pn.includes("fear"))add("Fear language",6,"Threat / loss wording");
+  if(pn.includes("authority")&&Object.keys(flags).length)add("Authority + bad link",5,"Impersonation pattern");
+  if(pn.includes("reward")&&urls.length)add("Reward bait",5,"Bonus / free / refund");
+  if(/do not tell|don't tell|keep this secret|gift card/.test(low))add("Secrecy / gift cards",12,"BEC pattern");
+  if(/\bqr\b|scan/.test(low)&&urls.length)add("QR lure",6,"Scan leads to a link");
+  let s=Math.min(100,Object.values(H).reduce((a,b)=>a+b[0],0));
+  if(urls.length&&!Object.keys(flags).length&&!short.length&&!H["Credential request"])s=Math.max(0,s-15);
+  const lvl=s>=50?"high-risk":s>=22?"suspicious":"legitimate";
+  return{s,lvl,H,psy:pn.slice(0,3),urls,k,cta}
+}
+const COL={legitimate:"var(--ok)","suspicious":"var(--warn)","high-risk":"var(--bad)"},hist=[];
+async function show(t){
+  $("status").textContent="Analyzing…";
+  let d,online=true;
+  try{const r=await fetch("/api/analyze",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({text:t})});
+    if(!r.ok)throw 0;d=await r.json();}
+  catch(e){online=false;const l=analyze(t);d={score:l.s,level:l.lvl,rule_score:l.s,ml:null,
+    indicators:Object.fromEntries(Object.entries(l.H).map(([n,[p,w]])=>[n+" +"+p,w])),psychology:l.psy,urls:l.urls,action:ACT[l.lvl]};}
+  const c=COL[d.level];$("status").textContent=online?"Analyzed with Python rules + ML model.":"Server unreachable: used offline rules only.";
+  const ml=d.ml?`<div class="card"><h3>ML model prediction</h3><b style="color:${COL[d.ml.label]}">${d.ml.label.toUpperCase()}</b>
+    ${Object.entries(d.ml.probs).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div class="mut">${k} ${(v*100).toFixed(0)}%</div><div class="gauge"><i style="width:${v*100}%;background:${COL[k]}"></i></div>`).join("")}
+    <p class="mut">Rule score ${d.rule_score} · ML score ${d.ml.score} · final = 0.6 rules + 0.4 ML</p></div>`:"";
+  $("res").className="";$("res").innerHTML=`<div class="card"><div class="row" style="align-items:center;justify-content:space-between"><div class="big" style="color:${c}">${d.score}<span class="mut">/100</span></div><span class="badge" style="background:${c}">${d.level.toUpperCase()}</span></div>
+  <div class="gauge"><i style="width:${d.score}%;background:${c}"></i></div></div>${ml}
+  <div class="card"><h3>Detected indicators</h3>${Object.keys(d.indicators).length?"<ul>"+Object.entries(d.indicators).map(([n,w])=>`<li><b>${esc(n.replace(/_/g," "))}</b><br><span class="mut">${esc(w)}</span></li>`).join("")+"</ul>":'<span class="mut">None found.</span>'}
+  ${d.urls.length?`<p class="mut">Links: ${d.urls.map(esc).join(", ")}</p>`:""}</div>
+  <div class="card"><h3>Psychological technique</h3>${d.psychology.map(p=>`<span class="chip">${esc(p)}</span>`).join("")}</div>
+  <div class="card" style="border-color:${c}"><h3>Recommended action</h3>${esc(d.action)}</div>`;
+  hist.unshift([t,{s:d.score,lvl:d.level}]);$("hist").innerHTML=hist.map(([t,r])=>`<div class="hist"><span>${esc(t.slice(0,60))}</span><b style="color:${COL[r.lvl]}">${r.s}</b></div>`).join("");
+  $("res").scrollIntoView({behavior:"smooth"});
+}
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let stream=null,raf=null;
+$("bCam").onclick=async()=>{
+  try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"environment"}});
+    $("vid").srcObject=stream;await $("vid").play();$("cam").style.display="block";$("bShot").disabled=false;
+    $("status").textContent="Looking for a QR code… or tap Scan OCR to read text.";loop();
+  }catch(e){$("status").textContent="Camera unavailable ("+e.name+"). Paste the text below instead."}};
+function frame(){const v=$("vid"),c=document.createElement("canvas");c.width=v.videoWidth;c.height=v.videoHeight;
+  const x=c.getContext("2d");x.drawImage(v,0,0);return[c,x]}
+function loop(){const v=$("vid");if(v.videoWidth&&window.jsQR){const[c,x]=frame(),d=x.getImageData(0,0,c.width,c.height),q=jsQR(d.data,c.width,c.height);
+  if(q&&q.data){stop();$("txt").value="QR code opens: "+q.data;$("status").textContent="QR code decoded.";show($("txt").value);return}}
+  raf=requestAnimationFrame(loop)}
+function stop(){cancelAnimationFrame(raf);stream&&stream.getTracks().forEach(t=>t.stop());$("cam").style.display="none";$("bShot").disabled=true}
+$("bShot").onclick=async()=>{
+  if(!window.Tesseract){$("status").textContent="OCR engine not available here. Paste the text instead.";return}
+  const[c]=frame();$("status").textContent="Reading text…";
+  try{const{data}=await Tesseract.recognize(c,"eng");stop();$("txt").value=data.text.trim();$("status").textContent="Text captured. Review and analyze.";if(data.text.trim())show(data.text)}
+  catch(e){$("status").textContent="OCR failed in this environment. Paste the text instead."}};
+$("bPhoto").onclick=()=>$("file").click();
+$("file").onchange=e=>{const f=e.target.files[0];if(!f)return;const img=new Image();
+  img.onload=async()=>{const sc=Math.min(1,1600/Math.max(img.width,img.height)),c=document.createElement("canvas");
+    c.width=img.width*sc;c.height=img.height*sc;const x=c.getContext("2d");x.drawImage(img,0,0,c.width,c.height);
+    const d=x.getImageData(0,0,c.width,c.height),q=window.jsQR&&jsQR(d.data,c.width,c.height);
+    let out="";if(q&&q.data)out="QR code opens: "+q.data+"\n";
+    $("status").textContent=q?"QR decoded. Reading any text too…":"Reading text…";
+    try{const{data}=await Tesseract.recognize(c,"eng");out+=data.text.trim()}catch(err){if(!out){$("status").textContent="OCR could not run here. Paste the text instead.";return}}
+    $("txt").value=out.trim();$("status").textContent="Done.";if(out.trim())show(out)};
+  img.src=URL.createObjectURL(f);e.target.value=""};
+$("bGo").onclick=()=>$("txt").value.trim()&&show($("txt").value);
+const SAMPLES=["AcmeBank ALERT: Unauthorized transaction of $4,999 detected! Confirm your PIN and OTP now: http://acmebank-secure-login.example/verify",
+"AcmeCourier: Your parcel is waiting. Reschedule delivery: https://bit.ly/3xAmpLe","Reminder: team meeting at 10:00 in Room 4. - AcmeCorp Admin"];
+let si=0;$("bDemo").onclick=()=>{$("txt").value=SAMPLES[si++%3];show($("txt").value)};
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("on",x===b));
+  ["scan","hist","about"].forEach(t=>$("tab-"+t).classList.toggle("hide",t!==b.dataset.t))});
+</script></body></html>

@@ -132,7 +132,7 @@ $("bCam").onclick=async()=>{
   }catch(e){$("status").textContent="Camera unavailable ("+e.name+"). Paste the text below instead."}};
 function frame(){const v=$("vid"),c=document.createElement("canvas");c.width=v.videoWidth;c.height=v.videoHeight;
   const x=c.getContext("2d");x.drawImage(v,0,0);return[c,x]}
-function loop(){const v=$("vid");if(v.videoWidth&&window.jsQR){const[c,x]=frame(),d=x.getImageData(0,0,c.width,c.height),q=jsQR(d.data,c.width,c.height);
+function loop(){const v=$("vid");if(v.videoWidth&&window.jsQR){const[c,x]=frame(),d=x.getImageData(0,0,c.width,c.height),q=jsQR(d.data,c.width,c.height,{inversionAttempts:"attemptBoth"});
   if(q&&q.data){stop();$("txt").value="QR code opens: "+q.data;$("status").textContent="QR code decoded.";show($("txt").value);return}}
   raf=requestAnimationFrame(loop)}
 function stop(){cancelAnimationFrame(raf);stream&&stream.getTracks().forEach(t=>t.stop());$("cam").style.display="none";$("bShot").disabled=true}
@@ -141,12 +141,22 @@ $("bShot").onclick=async()=>{
   const[c]=frame();$("status").textContent="Reading text…";
   try{const{data}=await Tesseract.recognize(c,"eng");stop();$("txt").value=data.text.trim();$("status").textContent="Text captured. Review and analyze.";if(data.text.trim())show(data.text)}
   catch(e){$("status").textContent="OCR failed in this environment. Paste the text instead."}};
+async function decodeQR(c){
+  if("BarcodeDetector" in window){try{const r=await new BarcodeDetector({formats:["qr_code"]}).detect(c);if(r.length)return r[0].rawValue}catch(e){}}
+  if(!window.jsQR)return null;
+  for(const sc of[1,.6,.4,.25])for(const crop of[1,.7,.45]){
+    const w=Math.round(c.width*crop*sc),h=Math.round(c.height*crop*sc);if(w<80||h<80)continue;
+    const t=document.createElement("canvas");t.width=w;t.height=h;const x=t.getContext("2d");
+    x.drawImage(c,c.width*(1-crop)/2,c.height*(1-crop)/2,c.width*crop,c.height*crop,0,0,w,h);
+    const d=x.getImageData(0,0,w,h),q=jsQR(d.data,w,h,{inversionAttempts:"attemptBoth"});if(q&&q.data)return q.data;
+    await new Promise(r=>setTimeout(r))}
+  return null}
 $("bPhoto").onclick=()=>$("file").click();
 $("file").onchange=e=>{const f=e.target.files[0];if(!f)return;const img=new Image();
-  img.onload=async()=>{const sc=Math.min(1,1600/Math.max(img.width,img.height)),c=document.createElement("canvas");
+  img.onload=async()=>{const sc=Math.min(1,2000/Math.max(img.width,img.height)),c=document.createElement("canvas");
     c.width=img.width*sc;c.height=img.height*sc;const x=c.getContext("2d");x.drawImage(img,0,0,c.width,c.height);
-    const d=x.getImageData(0,0,c.width,c.height),q=window.jsQR&&jsQR(d.data,c.width,c.height);
-    let out="";if(q&&q.data)out="QR code opens: "+q.data+"\n";
+    $("status").textContent="Looking for a QR code…";const qd=await decodeQR(c),q=qd?{data:qd}:null;
+    let out="";if(qd)out="QR code opens: "+qd+"\n";
     $("status").textContent=q?"QR decoded. Reading any text too…":"Reading text…";
     try{const{data}=await Tesseract.recognize(c,"eng");out+=data.text.trim()}catch(err){if(!out){$("status").textContent="OCR could not run here. Paste the text instead.";return}}
     $("txt").value=out.trim();$("status").textContent="Done.";if(out.trim())show(out)};
